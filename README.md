@@ -2,7 +2,7 @@
 
 This is the repository for the scenarios available on [killercoda.com/ica](https://killercoda.com/ica)
 
-Here are some [docs on the Istion Certified Associate (ICA)]https://training.linuxfoundation.org/certification/istio-certified-associate-ica/
+Here are some [docs on the Istio Certified Associate (ICA)](https://training.linuxfoundation.org/certification/istio-certified-associate-ica/)
 
 ## Contribute
 

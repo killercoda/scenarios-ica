@@ -16,8 +16,12 @@
         "text": "step3/text.md"
       },
       {
-        "title": "Cleanup",
+        "title": "Canary Upgrades",
         "text": "step4/text.md"
+      },
+      {
+        "title": "Cleanup",
+        "text": "step5/text.md"
       }
     ],
     "finish": {

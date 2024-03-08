@@ -1,14 +1,9 @@
+With using `/root/profiles/demo.yaml` do the following:
 
-Istioctl CLI is installed:
+- Update demo.yaml limits memory to '1Mi' for Pilot component.
 ```plain
-istioctl version
-```{{exec}}
-
-Now try to do following steps yourself.
-
-1. [List all available Istio Profiles](https://istio.io/latest/docs/setup/install/istioctl/#display-the-list-of-available-profiles) that can be installed
-```plain
-istioctl profile list
+diff /root/profiles/demo.yaml /root/profiles/demo-overlay.yaml
+istioctl install -f /root/profiles/demo-overlay.yaml
 ```{{exec}}
 
 <br>

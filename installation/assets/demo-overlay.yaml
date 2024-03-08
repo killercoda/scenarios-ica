@@ -57,6 +57,8 @@ spec:
           requests:
             cpu: 0m # CHANGED
             memory: 0Mi # CHANGED
+          limits:
+            memory: 1Gi # CHANGED HERE
 
   values:
     global:

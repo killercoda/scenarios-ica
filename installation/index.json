@@ -1,11 +1,23 @@
 {
-  "title": "Playground with Bookinfo app",
-  "description": "This playground has Istio installed on Kubernetes. Bookinfo demo application is also preprared along with several exercises on how to prepare for you ICA certification.",
+  "title": "Istio Installation, Upgrade & Configuration",
+  "description": "Try to install Istio, reconfigure and upgrade it.",
   "details": {
       "steps": [
       {
-        "title": "Check the Istio installation",
+        "title": "Using the Istio CLI to install a basic cluster",
         "text": "step1/text.md"
+      },
+      {
+        "title": "Customizing the Istio installation with the IstioOperator API",
+        "text": "step2/text.md"
+      },
+      {
+        "title": "Using overlays to manage Istio component settings",
+        "text": "step3/text.md"
+      },
+      {
+        "title": "Cleanup",
+        "text": "step4/text.md"
       }
     ],
     "finish": {

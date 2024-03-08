@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: sleep
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sleep
+  labels:
+    app: sleep
+spec:
+  terminationGracePeriodSeconds: 0
+  serviceAccountName: sleep
+  containers:
+  - name: sleep
+    image: curlimages/curl
+    command: ["/bin/sleep", "infinity"]
+    imagePullPolicy: IfNotPresent
+    volumeMounts:
+    - mountPath: /etc/sleep/tls
+      name: secret-volume
+  volumes:
+  - name: secret-volume
+    secret:
+      secretName: sleep-secret
+      optional: true

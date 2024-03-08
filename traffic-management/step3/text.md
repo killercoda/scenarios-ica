@@ -1,29 +1,12 @@
 
+[Expose](https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/) `details` service through IngressGateay on host `my.details.com`. Verify via curl.
 
-Bookinfo has all component connected using regular Kubernetes Services. Pods have already Istio sidecars injected. Convert all 3 services and all appropriate deployments to VirtualService, so they can be controlled via service mesh. Use appropriate labels of the deployments.
-
-You can use Sleep pod (simplified Sleep demo app) `kubectl exec sleep -- curl INTERNAL_URL` to examine behaviour of the microservices from inside the cluster.
-
-- service/details ->
-  - deployment.apps/details-v1
-- service/ratings ->
-  - deployment.apps/ratings-v1
-- service/reviews ->
-  - deployment.apps/reviews-v1
-  - deployment.apps/reviews-v2
-  - deployment.apps/reviews-v3
-
+FIXME: dynamic
 ```plan
-kubectl apply -f /root/solutions/step1-details.yaml -f /root/solutions/step1-ratings.yaml -f /root/solutions/step1-reviews.yaml
+kubectl apply -f /root/solutions/step3-details-gw.yaml
+
+curl -HHost:my.details.com 172.30.1.2:31470/details/7 -v
+echo
 ```{{exec}}
 
-Check that bookinfo app works along with app microservices behind it.
-
-```plan
-kubectl exec sleep -- curl bookinfo
-```{{exec}}
-
-
-
-
-
+Force out oubound traffic via Egress Gateway.

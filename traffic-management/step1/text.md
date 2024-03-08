@@ -8,7 +8,7 @@ You can use Sleep pod (simplified Sleep demo app) `kubectl exec sleep -- curl IN
   - deployment.apps/details-v1
 - service/ratings ->
   - deployment.apps/ratings-v1
-- service/reviews ->
+- service/reviews -> (point it to version 1 for now)
   - deployment.apps/reviews-v1
   - deployment.apps/reviews-v2
   - deployment.apps/reviews-v3
@@ -26,14 +26,69 @@ istioctl analyze -n default
 Check that bookinfo app works along with app microservices behind it.
 
 ```plan
-kubectl exec sleep -- curl details:9080
+kubectl exec sleep -- curl --no-progress-meter details:9080/details/7
 echo '---'
-kubectl exec sleep -- curl ratings:9080
+kubectl exec sleep -- curl --no-progress-meter ratings:9080/ratings/7
 echo '---'
-kubectl exec sleep -- curl reviews:9080
+kubectl exec sleep -- curl --no-progress-meter reviews:9080/reviews/7
 ```{{exec}}
 
+Try to simulate canary deployment - for reviews service, move 40% of traffic to v2. Check the output of the service.
 
 
+```plan
+kubectl apply -f /root/solutions/step1-reviews-40-to-v2.yaml
+```{{exec}}
 
+Verify via istioctl.
 
+```plan
+istioctl analyze -n default
+```{{exec}}
+
+Check that around 40 percent goes to v2.
+
+```plan
+for run in {1..10}; do
+  kubectl exec sleep -- curl --no-progress-meter reviews:9080/reviews/7
+done
+```{{exec}}
+
+Shift all traffic to v2 now.
+
+```plan
+kubectl apply -f /root/solutions/step1-reviews-all-to-v2.yaml
+```{{exec}}
+
+Verify via istioctl.
+
+```plan
+istioctl analyze -n default
+```{{exec}}
+
+Check that all goes to v2.
+
+```plan
+for run in {1..10}; do
+  kubectl exec sleep -- curl --no-progress-meter reviews:9080/reviews/7
+done
+```{{exec}}
+
+Now introduce new version 3 just if the header 'X-Special: yes" is present. For other request show v2 still.
+
+```plan
+kubectl apply -f /root/solutions/step1-reviews-header-v3.yaml
+```{{exec}}
+
+Verify via istioctl.
+
+```plan
+istioctl analyze -n default
+```{{exec}}
+
+Check that non-header traffic goes to v2 and with header the traffic gets v3 reponse.
+
+```plan
+kubectl exec sleep -- curl --no-progress-meter reviews:9080/reviews/7
+kubectl exec sleep -- curl -HX-Special=yes --no-progress-meter reviews:9080/reviews/7
+```{{exec}}

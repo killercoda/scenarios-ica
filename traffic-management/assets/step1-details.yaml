@@ -8,5 +8,16 @@ spec:
   http:
   - route:
     - destination:
-        host: detauls
+        host: details
         subset: v1
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: details
+spec:
+  host: details
+  subsets:
+  - name: v1
+    labels:
+      version: v1

@@ -12,10 +12,11 @@ istioctl install --set profile=demo -y --manifests=/root/istio-${ISTIO_VERSION}/
 mkdir -p /root/solutions/
 mv /tmp/step*.yaml /root/solutions/
 
-# install sleep-pod
-kubectl apply -f /tmp/sleep-pod.yaml
 
 # install Bookinfo demo app: https://istio.io/latest/docs/examples/bookinfo/
 kubectl label namespace default istio-injection=enabled
 kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-${ISTIO_MINOR_VERSION}/samples/bookinfo/platform/kube/bookinfo.yaml
 kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-${ISTIO_MINOR_VERSION}/samples/bookinfo/networking/bookinfo-gateway.yaml
+
+# install sleep-pod
+kubectl apply -f /tmp/sleep-pod.yaml

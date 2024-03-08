@@ -27,9 +27,9 @@ Check that bookinfo app works along with app microservices behind it.
 
 ```plan
 kubectl exec sleep -- curl --no-progress-meter details:9080/details/7
-echo '---'
+echo
 kubectl exec sleep -- curl --no-progress-meter ratings:9080/ratings/7
-echo '---'
+echo
 kubectl exec sleep -- curl --no-progress-meter reviews:9080/reviews/7
 ```{{exec}}
 
@@ -51,6 +51,7 @@ Check that around 40 percent goes to v2.
 ```plan
 for run in {1..10}; do
   kubectl exec sleep -- curl --no-progress-meter reviews:9080/reviews/7
+  echo
 done
 ```{{exec}}
 
@@ -71,13 +72,14 @@ Check that all goes to v2.
 ```plan
 for run in {1..10}; do
   kubectl exec sleep -- curl --no-progress-meter reviews:9080/reviews/7
+  echo
 done
 ```{{exec}}
 
 Now introduce new version 3 just if the header 'X-Special: yes" is present. For other request show v2 still.
 
 ```plan
-kubectl apply -f /root/solutions/step1-reviews-header-v3.yaml
+kubectl apply -f /root/solutions/step1-reviews-header-to-v3.yaml
 ```{{exec}}
 
 Verify via istioctl.
@@ -90,5 +92,7 @@ Check that non-header traffic goes to v2 and with header the traffic gets v3 rep
 
 ```plan
 kubectl exec sleep -- curl --no-progress-meter reviews:9080/reviews/7
-kubectl exec sleep -- curl -HX-Special=yes --no-progress-meter reviews:9080/reviews/7
+echo
+kubectl exec sleep -- curl -Hx-special:yes --no-progress-meter reviews:9080/reviews/7
+echo
 ```{{exec}}

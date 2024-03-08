@@ -1,29 +1,22 @@
-
-
-Bookinfo has all component connected using regular Kubernetes Services. Pods have already Istio sidecars injected. Convert all 3 services and all appropriate deployments to VirtualService, so they can be controlled via service mesh. Use appropriate labels of the deployments.
-
-You can use Sleep pod (simplified Sleep demo app) `kubectl exec sleep -- curl INTERNAL_URL` to examine behaviour of the microservices from inside the cluster.
-
-- service/details ->
-  - deployment.apps/details-v1
-- service/ratings ->
-  - deployment.apps/ratings-v1
-- service/reviews ->
-  - deployment.apps/reviews-v1
-  - deployment.apps/reviews-v2
-  - deployment.apps/reviews-v3
+Create a new namespace `all-injected`. Run an example Pod to see that it has [injected sidecar](https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/).
 
 ```plan
-kubectl apply -f /root/solutions/step1-details.yaml -f /root/solutions/step1-ratings.yaml -f /root/solutions/step1-reviews.yaml
-```{{exec}}
-
-Check that bookinfo app works along with app microservices behind it.
-
-```plan
-kubectl exec sleep -- curl bookinfo
+kubectl create ns all-injected
+kubectl labale all-injected istio-injected=enabled
+kubectl run --image nginx -n all-injected injected-nginx 
+kubectl get pods -n all-injected -w
 ```{{exec}}
 
 
+Use annotation on the pod in `all-injected` to disable sidecar and verify the result.
+```plan
+kubectl run --image nginx -n all-inject --labels=sidecar.istio.io/inject=false no-sidecar-nginx
+kubectl get pods -n all-injected -w
+```{{exec}}
 
-
+Create namespace `not-automatic` and create a pod with injected sidecar.
+```plan
+kubectl create namespace non-automatic
+kubectl run --image nginx -n non-automatic non-automatic-nginx --dry-run | istioctl kube-inject -
+```{{exec}}
 

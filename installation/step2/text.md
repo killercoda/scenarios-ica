@@ -9,7 +9,7 @@ istioctl install -f /root/profiles/demo.yaml --set meshConfig.accessLogFile=/dev
 - Do the same via updated demo.yaml:
 ```plain
 diff /root/profiles/demo.yaml /root/profiles/demo-with-access-log.yaml
-istioctl install -f /root/profiles/demo-with-access-log.yaml --set meshConfig.accessLogFile=/dev/stdout
+istioctl install -f /root/profiles/demo-with-access-log.yaml
 ```{{exec}}
 
 - Reinstall and disable the Egress gateway component (copy and modify demo.yaml):

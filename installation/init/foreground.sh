@@ -7,4 +7,4 @@ echo "export PATH=/root/istio-${ISTIO_VERSION}/bin:\$PATH" >> .bashrc
 export PATH=/root/istio-${ISTIO_VERSION}/bin:$PATH
 
 mkdir -p /root/profiles
-mv /tmp/demo.yaml /root/profiles/
+mv /tmp/demo*.yaml /root/profiles/

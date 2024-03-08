@@ -35,6 +35,9 @@
     "assets": {
       "host01": [
         {"file": "wait-background.sh", "target": "/ks", "chmod": "+x"},
+        {"file": "demo-overlay.yaml", "target": "/tmp", "chmod": "+x"},
+        {"file": "demo-with-access-log.yaml", "target": "/tmp", "chmod": "+x"},
+        {"file": "demo-without-egress-gw.yaml", "target": "/tmp", "chmod": "+x"},
         {"file": "demo.yaml", "target": "/tmp", "chmod": "+x"}
       ]
     }

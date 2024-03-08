@@ -43,6 +43,9 @@
         {"file": "sleep-pod.yaml", "target": "/tmp", "chmod": "+x"},
         {"file": "step1-details.yaml", "target": "/tmp", "chmod": "+x"},
         {"file": "step1-ratings.yaml", "target": "/tmp", "chmod": "+x"},
+        {"file": "step1-reviews-40-to-v2.yaml", "target": "/tmp", "chmod": "+x"},
+        {"file": "step1-reviews-all-to-v2.yaml", "target": "/tmp", "chmod": "+x"},
+        {"file": "step1-reviews-header-to-v3.yaml", "target": "/tmp", "chmod": "+x"},
         {"file": "step1-reviews.yaml", "target": "/tmp", "chmod": "+x"}
       ]
     }

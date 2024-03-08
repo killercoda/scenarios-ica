@@ -8,7 +8,7 @@ istioctl x precheck
 
 - Install a `canary` Istio revision to the `istio-system` namespace next to already installed one:
 ```plain
-istioctl install --set profile=canary -f /root/profiles/demo.yaml
+istioctl install --set revision=canary -f /root/profiles/demo.yaml
 ```{{exec}}
 
 - Verify the installation (there are 2 Istio installations now)
@@ -38,7 +38,7 @@ istioctl proxy-status | grep "\.canary-ns "
 - Cleanup namespace `canary-ns` and `canary` Istio installation
 ```plain
 kubectl delete namespace canary-ns
-istioctl uninstall --set profile=canary -f /root/profiles/demo.yaml
+istioctl uninstall --set revision=canary -f /root/profiles/demo.yaml
 ```{{exec}}
 
 <br>

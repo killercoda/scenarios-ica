@@ -20,7 +20,7 @@ istioctl install -f /root/profiles/demo-without-egress-gw.yaml
 
 - Display the parameters of the current installation:
 ```plain
-kubectl get IstioOperator -n istio-system -o yaml istio
+kubectl get IstioOperator -n istio-system -o yaml installed-state
 ```{{exec}}
 
 

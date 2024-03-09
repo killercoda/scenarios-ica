@@ -9,9 +9,12 @@ istioctl analyze -n default
 ```{{exec}}
 
 Simulate a request:
+```plan
 kubectl exec sleep -- curl --no-progress-meter details:9080/details/7
+echo
+```{{exec}}
 
 Check the logs of `httpbin` to verify:
 ```plan
-kubectl logs httpbin --all-containers
+kubectl logs $(kubectl get pods -o name | grep httpbin)
 ```{{exec}}

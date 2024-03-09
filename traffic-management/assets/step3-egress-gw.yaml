@@ -2,6 +2,7 @@ apiVersion: networking.istio.io/v1alpha3
 kind: ServiceEntry
 metadata:
   name: google
+  namespace: internet-blocked
 spec:
   hosts:
   - google.com
@@ -18,6 +19,7 @@ apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
   name: istio-egressgateway
+  namespace: internet-blocked
 spec:
   selector:
     istio: egressgateway
@@ -33,6 +35,7 @@ apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
   name: egressgateway-for-google
+  namespace: internet-blocked
 spec:
   host: istio-egressgateway.istio-system.svc.cluster.local
   subsets:

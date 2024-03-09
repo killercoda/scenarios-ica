@@ -13,19 +13,15 @@ curl -HHost:my.details.com "http://$INGRESS/details/7" -v
 echo
 ```{{exec}}
 
-[Route all oubound traffic](https://istio.io/latest/docs/tasks/traffic-management/egress/egress-gateway/#egress-gateway-for-http-traffic) to external service `https://google.com` via Egress Gateway.
+[Route all oubound traffic](https://istio.io/latest/docs/tasks/traffic-management/egress/egress-gateway/#egress-gateway-for-http-traffic) to external service `https://google.com` via Egress Gateway for Sleep pod in namespace `internet-blocked`.
 
-
-FIXME: this does not work
-Apply this "evil" NetworkPolicy that blocks `sleep` from  all internet access except local pod network. Following `curl` will fail.
-```plan
-kubectl apply -f /root/solutions/step3-block-default-direct-egress.yaml
-```{{exec}}
+Following `curl` will fail because of the restrictive NetworkPolicy.
 ```plan
 curl -o /dev/null "http://google.com" -v
 echo
 ```{{exec}}
 
+Create new Gateway for egress traffic, add external DNS name to service mesh to make this work.
 
 ```plan
 kubectl apply -f /root/solutions/step3-egress-gw.yaml

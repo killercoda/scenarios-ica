@@ -1,4 +1,4 @@
-Mirror all traffic for `details` version 1 service to `httpbin` version 1 service. Edit already existing VirtualService from previous steps.
+For `reviews`, send all traffic to v1. Also mirror all traffic for `reviews` version 1 service to `reviews` version 3 service. Edit already existing VirtualService from previous steps.
 
 ```plan
 kubectl apply -f /root/solutions/step6-mirror.yaml
@@ -10,11 +10,11 @@ istioctl analyze -n default
 
 Simulate a request:
 ```plan
-kubectl exec sleep -- curl --no-progress-meter details:9080/details/7
+kubectl exec sleep -- curl --no-progress-meter reviews:9080/reviews/7
 echo
 ```{{exec}}
 
-Check the logs of `httpbin` to verify:
+Check the logs of `reviews` to verify:
 ```plan
-kubectl logs $(kubectl get pods -o name | grep httpbin)
+kubectl logs $(kubectl get pods -o name | grep reviews-v3)
 ```{{exec}}

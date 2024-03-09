@@ -1,18 +1,18 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: details
+  name: reviews
 spec:
   hosts:
-  - details
+  - reviews
   http:
   - route:
     - destination:
-        host: details
+        host: reviews
         subset: v1
       weight: 100
     mirror:
-      host: httpbin
-      subset: v1
+      host: reviews
+      subset: v3
     mirrorPercentage:
       value: 100.0

@@ -9,9 +9,13 @@ export PATH=/root/istio-${ISTIO_VERSION}/bin:$PATH
 mv /tmp/demo.yaml /root/istio-${ISTIO_VERSION}/manifests/profiles/
 istioctl install --set profile=demo -y --manifests=/root/istio-${ISTIO_VERSION}/manifests
 
+mkdir -p /root/solutions/
+mv /tmp/step*.yaml /root/solutions/
+
 # install Bookinfo demo app: https://istio.io/latest/docs/examples/bookinfo/
 kubectl label namespace default istio-injection=enabled
 kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-${ISTIO_MINOR_VERSION}/samples/bookinfo/platform/kube/bookinfo.yaml
 kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-${ISTIO_MINOR_VERSION}/samples/bookinfo/networking/bookinfo-gateway.yaml
 kubectl apply -f /tmp/httpbin.yaml
 kubectl apply -f /tmp/sleep-pod.yaml
+kubectl apply -f /tmp/reviews.yaml

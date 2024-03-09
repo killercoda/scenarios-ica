@@ -17,6 +17,8 @@ echo
 
 Now let's try this without outlier detection. `reviews` version 2 takes 2 seconds for each request. Configure it to maximum concurrency of 1 parallel connection and verify this. Edit already existing `DestinationRule`. Traffic is already routed to v2.
 
+FIXME: THIS DOESNT TRIGGER
+
 
 ```plan
 kubectl apply -f /root/solutions/step1-circuit-breaker-reviews.yaml

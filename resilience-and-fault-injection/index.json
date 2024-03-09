@@ -32,7 +32,9 @@
         {"file": "reviews.yaml", "target": "/tmp", "chmod": "+x"},
         {"file": "sleep-pod.yaml", "target": "/tmp", "chmod": "+x"},
 
-        {"file": "step1-circuit-breaker.yaml", "target": "/tmp", "chmod": "+x"}
+        {"file": "step1-circuit-breaker.yaml", "target": "/tmp", "chmod": "+x"},
+        {"file": "step1-circuit-breaker-reviews.yaml", "target": "/tmp", "chmod": "+x"},
+        {"file": "step2-retries", "target": "/tmp", "chmod": "+x"}
       ]
     }
   },

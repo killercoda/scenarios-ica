@@ -27,7 +27,11 @@
     "assets": {
       "host01": [
         {"file": "wait-background.sh", "target": "/ks", "chmod": "+x"},
-        {"file": "demo.yaml", "target": "/tmp", "chmod": "+x"}
+        {"file": "demo.yaml", "target": "/tmp", "chmod": "+x"},
+        {"file": "httpbin.yaml", "target": "/tmp", "chmod": "+x"},
+        {"file": "sleep-pod.yaml", "target": "/tmp", "chmod": "+x"},
+
+        {"file": "step1-circuit-breaker.yaml", "target": "/tmp", "chmod": "+x"}
       ]
     }
   },

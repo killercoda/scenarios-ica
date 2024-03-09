@@ -16,5 +16,5 @@ echo
 
 Check the logs of `reviews` to verify:
 ```plan
-kubectl logs $(kubectl get pods -o name | grep reviews-v3)
+kubectl logs $(kubectl get pods -o name | grep reviews-v3) -c istio-proxy
 ```{{exec}}

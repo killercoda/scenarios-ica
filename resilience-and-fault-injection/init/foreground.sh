@@ -13,3 +13,5 @@ istioctl install --set profile=demo -y --manifests=/root/istio-${ISTIO_VERSION}/
 kubectl label namespace default istio-injection=enabled
 kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-${ISTIO_MINOR_VERSION}/samples/bookinfo/platform/kube/bookinfo.yaml
 kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-${ISTIO_MINOR_VERSION}/samples/bookinfo/networking/bookinfo-gateway.yaml
+kubectl apply -f /tmp/httpbin.yaml
+kubectl apply -f /tmp/sleep-pod.yaml

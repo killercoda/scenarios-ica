@@ -1,33 +1,15 @@
+Setup [circuit breaker](https://istio.io/latest/docs/tasks/traffic-management/circuit-breaking/#configuring-the-circuit-breaker) that will trip after single error in 10s and make `httpbin` pod unavailable for 1 minute. To simulate this, limit the amount of number of requests per connection to 1, so the second request triggers the error.
 
-Istio has been installed like described [here](https://istio.io/latest/docs/setup/getting-started).
-
-Current profile is `demo` with slight tuning for Killercoda environment. You have these components prepared:
-- istiod
-- istio-egressgateway
-- istio-ingressgateway
-
-Check the installed version:
-
-```plain
-istioctl version
-```{{exec}}
-
-Also the demo app [Bookinfo](https://istio.io/latest/docs/examples/bookinfo/) is already installed, so you can experiment.
-
-- get all Bookinfo services in namespace default
 ```plan
-kubectl get services
+kubectl apply -f /root/solutions/step1-circuit-breaker.yaml
 ```{{exec}}
 
-- get all pods
+Do quickly these to observe the desired effect. First should be ok, second should trigger an error and third one should not get through because of the circuit breaker.
 ```plan
-kubectl get pods
+kubectl exec sleep -- curl -o /dev/null "http://httpbin:8000" -v
+echo
+kubectl exec sleep -- curl -o /dev/null "http://httpbin:8000" -v
+echo
+kubectl exec sleep -- curl -o /dev/null "http://httpbin:8000" -v
+echo
 ```{{exec}}
-
-- to confirm that the Bookinfo application is running, send a request to it by a curl command from some pod, for example from ratings:
-```plan
-kubectl exec "$(kubectl get pod -l app=ratings -o jsonpath='{.items[0].metadata.name}')" -c ratings -- curl -sS productpage:9080/productpage | grep -o "<title>.*</title>"
-```{{exec}}
-- should return '<title>Simple Bookstore App</title>'
-
-<br>

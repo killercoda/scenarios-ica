@@ -10,7 +10,6 @@ Add [required resources](https://istio.io/latest/docs/tasks/traffic-management/e
 
 ```plan
 kubectl apply -f /root/solutions/step4-serviceentry.yaml
-echo
 ```{{exec}}
 
 And this should work now:

@@ -20,3 +20,6 @@ kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-${ISTIO_M
 
 # install sleep-pod
 kubectl apply -f /tmp/sleep-pod.yaml
+
+kubectl create namespace internet-blocked
+kubectl apply -f /tmp/internet-blocked-network-policy.yaml

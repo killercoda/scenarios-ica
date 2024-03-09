@@ -1,4 +1,4 @@
-Configure 4 retries with 3s timeout in between for the `httpbin` service. Verify that it takes around 12s when you hit `httpbin:8000/status/500` error url.
+Configure 100 retries in between for the `httpbin` service. Verify that it takes around 12s when you hit `httpbin:8000/status/500` error url.
 
 ```plan
 kubectl apply -f /root/solutions/step2-retries.yaml
@@ -9,4 +9,9 @@ date
 kubectl exec sleep -- curl -o /dev/null "http://httpbin:8000/status/500" -v
 echo
 date
+```{{exec}}
+
+Observe number of requests in the log:
+```plan
+kubectl logs $(kubectl get pods -o name | grep httpbin-v1) -c istio-proxy
 ```{{exec}}

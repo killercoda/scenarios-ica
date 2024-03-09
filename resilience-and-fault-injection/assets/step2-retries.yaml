@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: 
+  name: httpbin
 spec:
   hosts:
   - httpbin
@@ -11,5 +11,5 @@ spec:
         host: httpbin
         subset: v1
     retries:
-      attempts: 4
-      perTryTimeout: 3s
+      attempts: 100
+      retryOn: "500"

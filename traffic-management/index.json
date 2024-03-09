@@ -51,7 +51,8 @@
         {"file": "step1-reviews-header-to-v3.yaml", "target": "/tmp", "chmod": "+x"},
         {"file": "step1-reviews.yaml", "target": "/tmp", "chmod": "+x"},
         {"file": "step3-details-gw.yaml", "target": "/tmp", "chmod": "+x"},
-        {"file": "step3-egress-gw.yaml", "target": "/tmp", "chmod": "+x"}
+        {"file": "step3-egress-gw.yaml", "target": "/tmp", "chmod": "+x"},
+        {"file": "step4-serviceentry.yaml", "target": "/tmp", "chmod": "+x"}
       ]
     }
   },

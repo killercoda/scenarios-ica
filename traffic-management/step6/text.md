@@ -1,29 +1,17 @@
-
-
-Bookinfo has all component connected using regular Kubernetes Services. Pods have already Istio sidecars injected. Convert all 3 services and all appropriate deployments to VirtualService, so they can be controlled via service mesh. Use appropriate labels of the deployments.
-
-You can use Sleep pod (simplified Sleep demo app) `kubectl exec sleep -- curl INTERNAL_URL` to examine behaviour of the microservices from inside the cluster.
-
-- service/details ->
-  - deployment.apps/details-v1
-- service/ratings ->
-  - deployment.apps/ratings-v1
-- service/reviews ->
-  - deployment.apps/reviews-v1
-  - deployment.apps/reviews-v2
-  - deployment.apps/reviews-v3
+Mirror all traffic for `details` version 1 service to `httpbin` version 1 service. Edit already existing VirtualService from previous steps.
 
 ```plan
-kubectl apply -f /root/solutions/step1-details.yaml -f /root/solutions/step1-ratings.yaml -f /root/solutions/step1-reviews.yaml
+kubectl apply -f /root/solutions/step6-mirror.yaml
 ```{{exec}}
-
-Check that bookinfo app works along with app microservices behind it.
 
 ```plan
-kubectl exec sleep -- curl bookinfo
+istioctl analyze -n default
 ```{{exec}}
 
+Simulate a request:
+kubectl exec sleep -- curl --no-progress-meter details:9080/details/7
 
-
-
-
+Check the logs of `httpbin` to verify:
+```plan
+kubectl logs httpbin --all-containers
+```{{exec}}

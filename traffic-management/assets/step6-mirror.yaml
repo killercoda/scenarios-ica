@@ -6,13 +6,13 @@ spec:
   hosts:
   - details
   http:
-  - fault:
-      delay:
-        percentage:
-          value: 30
-        fixedDelay: 1s
-    route:
+  - route:
     - destination:
         host: details
-        subset: v2
-    timeout: 0.5s
+        subset: v1
+      weight: 100
+    mirror:
+      host: httpbin
+      subset: v1
+    mirrorPercentage:
+      value: 100.0

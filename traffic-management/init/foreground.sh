@@ -17,9 +17,9 @@ mv /tmp/step*.yaml /root/solutions/
 kubectl label namespace default istio-injection=enabled
 kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-${ISTIO_MINOR_VERSION}/samples/bookinfo/platform/kube/bookinfo.yaml
 kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-${ISTIO_MINOR_VERSION}/samples/bookinfo/networking/bookinfo-gateway.yaml
-
 # install sleep-pod, namespace=default
 kubectl apply -f /tmp/sleep-pod.yaml
+kubectl apply -f /tmp/httpbin.yaml
 
 kubectl create namespace internet-blocked
 kubectl label namespace internet-blocked istio-injection=enabled
@@ -32,3 +32,6 @@ kubectl label namespace only-mesh-routing istio-injection=enabled
 kubectl apply -f /tmp/only-mesh-routing.yaml
 # install sleep-pod, namespace=only-mesh-routing
 kubectl apply -n only-mesh-routing -f /tmp/sleep-pod.yaml
+
+echo "YOU ARE READY TO GO!"
+echo "--------------------"

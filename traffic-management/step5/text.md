@@ -1,9 +1,9 @@
 Let's get back to `default` namespace for now.
 
-Try to [inject 50% faults](https://istio.io/latest/docs/tasks/traffic-management/fault-injection/) into ratings v1 and verify.
+Try to [inject 50% faults](https://istio.io/latest/docs/tasks/traffic-management/fault-injection/) into `ratings` v1 and verify.
 
 ```plan
-kubectl apply -f /root/solutions/step5-details-faults.yaml
+kubectl apply -f /root/solutions/step5-ratings-faults.yaml
 ```{{exec}}
 
 ```plan
@@ -18,7 +18,7 @@ done
 ```{{exec}}
 
 
-Try to add 1s delay fro service details v1 in 30% of calls and verify.
+Try to add 1s delay for service `details` v1 in 30% of calls and verify.
 
 ```plan
 kubectl apply -f /root/solutions/step5-details-slowdown.yaml
@@ -38,7 +38,7 @@ done
 
 
 
-Now switch details to version 2 and add 0.5 timeout the same service. So the requets with injected 1s slowdown should fail.
+Now switch details to version 2 and add 0.5 timeout the same service. Version 2 is flawed and won't reply in 2s timeout. So all requests will fail, some after 0.5, some after 2s. (FIXME: check this fact)
 
 ```plan
 kubectl apply -f /root/solutions/step5-details-slowdown-with-timeout.yaml

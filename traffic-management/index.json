@@ -54,6 +54,7 @@
         {"file": "step3-egress-gw.yaml", "target": "/tmp", "chmod": "+x"},
         {"file": "step4-serviceentry.yaml", "target": "/tmp", "chmod": "+x"},
         {"file": "step5-details-slowdown.yaml", "target": "/tmp", "chmod": "+x"},
+        {"file": "step5-details-slowdown-with-timeout.yaml", "target": "/tmp", "chmod": "+x"},
         {"file": "step5-ratings-faults.yaml", "target": "/tmp", "chmod": "+x"}
       ]
     }

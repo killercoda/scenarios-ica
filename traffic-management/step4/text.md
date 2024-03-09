@@ -1,29 +1,20 @@
+In namespace `only-mesh-routing` there is a `sleep` pod that can connect only to services known to the service mesh. Add there all needed resources, so it can connect to `microsoft.com` both on HTTP and HTTPS.
 
-
-Bookinfo has all component connected using regular Kubernetes Services. Pods have already Istio sidecars injected. Convert all 3 services and all appropriate deployments to VirtualService, so they can be controlled via service mesh. Use appropriate labels of the deployments.
-
-You can use Sleep pod (simplified Sleep demo app) `kubectl exec sleep -- curl INTERNAL_URL` to examine behaviour of the microservices from inside the cluster.
-
-- service/details ->
-  - deployment.apps/details-v1
-- service/ratings ->
-  - deployment.apps/ratings-v1
-- service/reviews ->
-  - deployment.apps/reviews-v1
-  - deployment.apps/reviews-v2
-  - deployment.apps/reviews-v3
-
+This does not work now:
 ```plan
-kubectl apply -f /root/solutions/step1-details.yaml -f /root/solutions/step1-ratings.yaml -f /root/solutions/step1-reviews.yaml
+kubectl exec -n only-mesh-routing sleep -- curl -o /dev/null "http://microsoft.com" -v
+echo
 ```{{exec}}
 
-Check that bookinfo app works along with app microservices behind it.
+Add [required resources](https://istio.io/latest/docs/tasks/traffic-management/egress/egress-gateway/#egress-gateway-for-http-traffic).
 
 ```plan
-kubectl exec sleep -- curl bookinfo
+kubectl apply -f /root/solutions/step4-serviceentry.yaml
+echo
 ```{{exec}}
 
-
-
-
-
+And this should work now:
+```plan
+kubectl exec -n only-mesh-routing sleep -- curl -o /dev/null "http://microsoft.com" -v
+echo
+```{{exec}}

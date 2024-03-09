@@ -17,7 +17,7 @@ echo
 
 Following `curl` will fail because of the restrictive NetworkPolicy.
 ```plan
-curl -o /dev/null "http://google.com" -v
+kubectl exec -n internet-blocked sleep -- curl -o /dev/null "http://google.com" -v
 echo
 ```{{exec}}
 
@@ -30,8 +30,17 @@ kubectl apply -f /root/solutions/step3-egress-gw.yaml
 Routing through Egress Gateway should work.
 
 ```plan
-curl -o /dev/null "http://google.com" -v
+kubectl exec -n internet-blocked sleep -- curl -o /dev/null "http://google.com" -v
 echo
 ```{{exec}}
 
-Remove the NetworkPolicy.
+FIXME: this show how both works...
+You can inspect the diffent routing in the logs:
+```plan
+kubectl logs -n internet-blocked sleep --all-containers
+```{{exec}}
+
+```
+[2024-03-09T11:56:16.364Z] "GET / HTTP/1.1" 301 - via_upstream - "-" 0 219 28 17 "-" "curl/8.6.0" "54a8f337-b172-9ab6-98bc-79eaa878e22e" "google.com" "142.250.185.142:80" PassthroughCluster 192.168.0.6:36026 142.250.185.142:80 192.168.0.6:36012 - allow_any
+[2024-03-09T11:57:16.613Z] "GET / HTTP/1.1" 301 - via_upstream - "-" 0 219 39 35 "-" "curl/8.6.0" "e839838b-5177-9a37-b4c3-cddcf80f5c12" "google.com" "142.250.185.238:80" outbound|80||google.com 192.168.0.6:56686 142.250.185.238:80 192.168.0.6:56680 - default
+```

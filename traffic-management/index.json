@@ -42,6 +42,8 @@
         {"file": "demo.yaml", "target": "/tmp", "chmod": "+x"},
         {"file": "sleep-pod.yaml", "target": "/tmp", "chmod": "+x"},
         {"file": "internet-blocked-network-policy.yaml", "target": "/tmp", "chmod": "+x"},
+        {"file": "only-mesh-routing.yaml", "target": "/tmp", "chmod": "+x"},
+
         {"file": "step1-details.yaml", "target": "/tmp", "chmod": "+x"},
         {"file": "step1-ratings.yaml", "target": "/tmp", "chmod": "+x"},
         {"file": "step1-reviews-40-to-v2.yaml", "target": "/tmp", "chmod": "+x"},

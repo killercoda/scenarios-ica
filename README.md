@@ -1,6 +1,6 @@
 # Killercoda Istio ICA
 
-This is the repository for the scenarios available on [killercoda.com/ica](https://killercoda.com/ica)
+This is the repository for the scenarios available on [killercoda.com/ica-scenarios](https://killercoda.com/ica-scenarios)
 
 ## Contribute
 

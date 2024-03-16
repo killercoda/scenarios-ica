@@ -56,7 +56,6 @@ spec:
       host: security-appliance
     mirrorPercentage:
       value: 100.0
-
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
@@ -68,6 +67,9 @@ spec:
   - name: v1
     labels:
       version: v1
+
+
+
 ---
 apiVersion: v1
 kind: Service

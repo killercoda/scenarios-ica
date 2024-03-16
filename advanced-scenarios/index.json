@@ -1,19 +1,23 @@
 {
-  "title": "Securing Workloads",
-  "description": "FIXME: This playground has Istio installed on Kubernetes. Bookinfo demo application is also preprared along with several exercises on how to prepare for you ICA certification.",
+  "title": "Advanced Scenarios",
+  "description": "Let us explore some problems that might happen in a real life.",
   "details": {
       "steps": [
       {
-        "title": "Understand Istio security features",
+        "title": "Understand how to onboard non-Kubernetes workloads to the mesh",
         "text": "step1/text.md"
       },
       {
-        "title": "Set up Istio authorization for HTTP/TCP traffic in the mesh",
+        "title": "Routing outgoing traffic through Egress gateway",
         "text": "step2/text.md"
       },
       {
-        "title": "Configure mutual TLS at mesh, namespace, and workload levels",
+        "title": "Troubleshoot configuration issues #1",
         "text": "step3/text.md"
+      },
+      {
+        "title": "Troubleshoot configuration issues #2",
+        "text": "step4/text.md"
       }
     ],
     "finish": {
@@ -30,11 +34,8 @@
         {"file": "demo.yaml", "target": "/tmp", "chmod": "+x"},
         {"file": "httpbin.yaml", "target": "/tmp", "chmod": "+x"},
         {"file": "sleep-pod.yaml", "target": "/tmp", "chmod": "+x"},
-        {"file": "disable-mtls.yaml", "target": "/tmp", "chmod": "+x"},
+        {"file": "disable-mtls.yaml", "target": "/tmp", "chmod": "+x"}
 
-        {"file": "step3-cluster-level.yaml", "target": "/tmp", "chmod": "+x"},
-        {"file": "step3-namespace-level.yaml", "target": "/tmp", "chmod": "+x"},
-        {"file": "step3-workload-level.yaml", "target": "/tmp", "chmod": "+x"}
       ]
     }
   },

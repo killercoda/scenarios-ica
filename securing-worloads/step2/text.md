@@ -1,17 +1,45 @@
-Configure 100 retries in between for the `httpbin` service. Verify that it takes around 12s when you hit `httpbin:8000/status/500` error url.
+Make workload `httpbin` in namespace `mtls-strict` accept requests only from pods in namespace default `default`. You can use `sleep` Pod in namespace `non-default` to check that this works.
 
 ```plan
-kubectl apply -f /root/solutions/step2-retries.yaml
+kubectl apply -f /root/solutions/step2-secure-mtls-strict.yaml
 ```{{exec}}
 
+This should work:
 ```plan
-date
-kubectl exec sleep -- curl -o /dev/null "http://httpbin:8000/status/500" -v
+kubectl exec sleep -- curl -o /dev/null "http://httpbin.mtls-strict:8000/status/200" -v
 echo
-date
 ```{{exec}}
 
-Observe number of requests in the log:
+This should not:
 ```plan
-kubectl logs $(kubectl get pods -o name | grep httpbin-v1) -c istio-proxy
+kubectl exec -n non-default sleep -- curl -o /dev/null "http://httpbin.mtls-strict:8000/status/200" -v
+echo
+```{{exec}}
+
+Bonus: think about how this is diffent from using `NetworkPolicy`.
+
+Now configure Istio to deny all traffic to workload `httpbin` in namespace `mtls-permissive`.
+
+```plan
+kubectl apply -f /root/solutions/step3-deny-all.yaml
+```{{exec}}
+
+This should fail:
+```plan
+kubectl exec sleep -- curl -o /dev/null "http://httpbin.mtls-permissive:8000/status/200" -v
+echo
+```{{exec}}
+
+Now add a rule to allow `GET` requests to `/status/200`. Everything else should stay blocked.
+
+This should work:
+```plan
+kubectl exec sleep -- curl -o /dev/null "http://httpbin.mtls-permissive:8000/status/200" -v
+echo
+```{{exec}}
+
+This should fail:
+```plan
+kubectl exec sleep -- curl -o /dev/null -XPOST "http://httpbin.mtls-permissive:8000/status/200" -v
+echo
 ```{{exec}}

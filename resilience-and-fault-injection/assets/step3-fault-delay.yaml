@@ -1,0 +1,26 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: httpbin
+spec:
+  hosts:
+  - httpbin
+  http:
+  - match:
+    - uri:
+        prefix: "/status/200"
+    fault:
+      delay:
+        percentage:
+          value: 20
+        fixedDelay: 1s
+    route:
+    - destination:
+        host: httpbin
+        subset: v1
+  
+  # default non-delayed route
+  - route:
+    - destination:
+        host: httpbin
+        subset: v1

@@ -34,7 +34,9 @@
 
         {"file": "step1-circuit-breaker.yaml", "target": "/tmp", "chmod": "+x"},
         {"file": "step1-circuit-breaker-reviews.yaml", "target": "/tmp", "chmod": "+x"},
-        {"file": "step2-retries.yaml", "target": "/tmp", "chmod": "+x"}
+        {"file": "step2-retries.yaml", "target": "/tmp", "chmod": "+x"},
+        {"file": "step3-fault-delay.yaml", "target": "/tmp", "chmod": "+x"},
+        {"file": "step3-fault-abort.yaml", "target": "/tmp", "chmod": "+x"}
       ]
     }
   },

@@ -24,7 +24,7 @@ FIXME: THIS DOESNT TRIGGER
 kubectl apply -f /root/solutions/step1-circuit-breaker-reviews.yaml
 ```{{exec}}
 
-Do quickly these to observe the desired effect. First should be ok, second and third should fail.
+Do quickly these to observe the desired effect. First should be ok, second and third should fail (this is the theory. However there is some "slack" also mentioned in the docs, so it hard to trigger this way the limit.
 ```plan
 kubectl exec sleep -- curl -o /dev/null "http://reviews:9080/reviews/7" -v
 echo

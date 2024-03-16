@@ -32,3 +32,8 @@ kubectl create namespace outside-blocked
 kubectl label namespace outside-blocked istio-injection=enabled
 kubectl apply -n outside-blocked -f /tmp/outside-blocked.yaml
 kubectl apply -n outside-blocked -f /tmp/sleep-pod.yaml
+
+# step5 - security-appliance ns
+kubectl create namespace security-appliance
+kubectl label namespace security-appliance istio-injection=enabled
+kubectl apply -n security-appliance -f /tmp/security-appliance-broken.yaml

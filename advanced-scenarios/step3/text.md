@@ -1,11 +1,16 @@
 Istio is not working for the `httpbin` workload in `istio-should-work` namespace, fix it.
 
 TODO: hide this:
-- Verify that namespace should inject sidecar (see the namespace labels, check deployment labels)
+Verify that namespace should inject sidecar (see the namespace labels, check deployment labels)
 
 ```plan
 kubectl get deployment -o yaml -n istio-should-work
 kubectl get namespace --show-labels istio-should-work
+```{{exec}}
+
+Or you can even use `istioctl analyze`
+```plan
+istioctl analyze -n istio-should-work
 ```{{exec}}
 
 Probably the workload was created before the label was added to the namespace. Restarting the deployment should do the trick:

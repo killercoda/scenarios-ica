@@ -6,8 +6,9 @@ Configure required mTLS in the namespace `workload-level` between `sleep` pod an
 kubectl apply -f /root/solutions/step3-workload-level.yaml
 ```{{exec}}
 
+Check for problems:
 ```plan
-istioctl analyze -n default
+istioctl analyze -n workload-level
 ```{{exec}}
 
 ```plan
@@ -19,13 +20,13 @@ echo
 
 
 Do the same on the namespace level.
-
 ```plan
 kubectl apply -f /root/solutions/step3-namespace-level.yaml
 ```{{exec}}
 
+Check for problems:
 ```plan
-istioctl analyze -n default
+istioctl analyze -n namespace-level
 ```{{exec}}
 
 `sleep` from default should not reach, but
@@ -36,12 +37,13 @@ kubectl exec -n namespace-level sleep -- curl -o /dev/null "http://httpbin.names
 echo
 ```{{exec}}
 
-Do the same on the cluster level. (Edit the existing resource.)
+Do the same on the cluster level. (Hint: Edit the existing resource)
 
 ```plan
 kubectl apply -f /root/solutions/step3-cluster-level.yaml
 ```{{exec}}
 
+Check for problems:
 ```plan
 istioctl analyze -n default
 ```{{exec}}

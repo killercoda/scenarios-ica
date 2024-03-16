@@ -1,6 +1,6 @@
 {
   "title": "Securing Workloads",
-  "description": "FIXME: This playground has Istio installed on Kubernetes. Bookinfo demo application is also preprared along with several exercises on how to prepare for you ICA certification.",
+  "description": "These scenarios test you knowledge of `PeerAuthentication` and authorization in Istio service mesh.",
   "details": {
       "steps": [
       {
@@ -31,7 +31,11 @@
         {"file": "httpbin.yaml", "target": "/tmp", "chmod": "+x"},
         {"file": "sleep-pod.yaml", "target": "/tmp", "chmod": "+x"},
         {"file": "disable-mtls.yaml", "target": "/tmp", "chmod": "+x"},
+        {"file": "env-step1.yaml", "target": "/tmp", "chmod": "+x"},
 
+        {"file": "step2-secure-mtls-strict.yaml", "target": "/tmp", "chmod": "+x"},
+        {"file": "step2-allow-get.yaml", "target": "/tmp", "chmod": "+x"},
+        {"file": "step2-deny-all.yaml", "target": "/tmp", "chmod": "+x"},
         {"file": "step3-cluster-level.yaml", "target": "/tmp", "chmod": "+x"},
         {"file": "step3-namespace-level.yaml", "target": "/tmp", "chmod": "+x"},
         {"file": "step3-workload-level.yaml", "target": "/tmp", "chmod": "+x"}

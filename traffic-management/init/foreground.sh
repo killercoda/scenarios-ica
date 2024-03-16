@@ -33,8 +33,7 @@ kubectl apply -f /tmp/only-mesh-routing.yaml
 # install sleep-pod, namespace=only-mesh-routing
 kubectl apply -n only-mesh-routing -f /tmp/sleep-pod.yaml
 
-# FIXME: WAIT FOR ALL CONTAINERS TO STARTUP
+kubectl -n only-mesh-routing wait pod --all --for condition=Available --timeout 2m
 
+clear
 echo "YOU ARE READY TO GO!"
-
-

@@ -1,0 +1,28 @@
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  name: mtls
+  namespace: mtls-permissive
+spec:
+  mtls:
+    mode: PERMISSIVE
+---
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  name: mtls
+  namespace: mtls-strict
+spec:
+  mtls:
+    mode: STRICT
+---
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  name: mtls
+  namespace: mtls-disable
+spec:
+  mtls:
+    mode: DISABLE
+---
+# TODO override - httpbin with JWT 

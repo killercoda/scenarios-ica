@@ -1,5 +1,7 @@
 
 - [Uninstall Istio](https://istio.io/latest/docs/setup/install/istioctl/#uninstall-istio).
+
+TODO: HIDE THIS
 ```plain
 istioctl uninstall --purge
 ```{{exec}}

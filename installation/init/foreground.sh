@@ -8,3 +8,6 @@ export PATH=/root/istio-${ISTIO_VERSION}/bin:$PATH
 
 mkdir -p /root/profiles
 mv /tmp/demo*.yaml /root/profiles/
+
+clear
+echo "YOU ARE READY TO GO!"

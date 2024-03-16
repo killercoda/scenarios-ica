@@ -20,5 +20,5 @@ kubectl rollout restart -n istio-should-work deployment httpbin
 
 After a while, you should see sidecard inject `2/2`.
 ```plan
-kubectl get pods -n istio-should-work
+kubectl get pods -n istio-should-work -w
 ```{{exec}}

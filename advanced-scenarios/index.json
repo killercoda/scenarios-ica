@@ -35,7 +35,6 @@
         {"file": "httpbin.yaml", "target": "/tmp", "chmod": "+x"},
         {"file": "sleep-pod.yaml", "target": "/tmp", "chmod": "+x"},
         {"file": "outside-blocked.yaml", "target": "/tmp", "chmod": "+x"},
-        {"file": "security-appliance-broken.yaml", "target": "/tmp", "chmod": "+x"},
 
         {"file": "step1-external-vm-example.yaml", "target": "/tmp", "chmod": "+x"},
         {"file": "step2-egress.yaml", "target": "/tmp", "chmod": "+x"},

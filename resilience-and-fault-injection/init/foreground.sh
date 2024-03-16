@@ -19,3 +19,8 @@ kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-${ISTIO_M
 kubectl apply -f /tmp/httpbin.yaml
 kubectl apply -f /tmp/sleep-pod.yaml
 kubectl apply -f /tmp/reviews.yaml
+
+kubectl wait deployment --all --for condition=Available --timeout 2m
+
+clear
+echo "YOU ARE READY TO GO!"

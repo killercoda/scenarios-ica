@@ -19,6 +19,14 @@ kubectl label namespace default istio-injection=enabled
 kubectl apply -f /tmp/httpbin.yaml
 kubectl apply -f /tmp/sleep-pod.yaml
 
+# step1
+for NS in (mtls-permissive mtls-strict mtls-disable jwt); do
+    kubectl create namespace $NS
+    kubectl label namespace $NS istio-injection=enabled
+    kubectl apply -n $NS /tmp/httpbin.yaml
+done
+kubectl apply -f /tmp/env-step1.yaml
+
 # workload-level ns
 kubectl create namespace workload-level
 kubectl label namespace workload-level istio-injection=enabled
@@ -30,3 +38,8 @@ kubectl create namespace namespace-level
 kubectl label namespace namespace-level istio-injection=enabled
 kubectl apply -n namespace-level -f /tmp/httpbin.yaml
 kubectl apply -n namespace-level -f /tmp/sleep-pod.yaml
+
+kubectl -n namespace-level wait pod --all --for condition=Available --timeout 2m
+
+clear
+echo "YOU ARE READY TO GO!"

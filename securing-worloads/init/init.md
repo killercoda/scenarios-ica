@@ -1,6 +1,11 @@
 <br>
-This playground has Istio installed on Kubernetes
+Istio can support two basic authentization methods:
+- JWT tokens (inside HTTP header of the request that the server can validate)
+- mTLS (mutual TLS)
 
-Also the demo app [Bookinfo](https://istio.io/latest/docs/examples/bookinfo/) is installed in the `default` namespace.
+Istio can use mTLS  meaning that both parties that communicate establish a secure connection exchanging both client and server certificates in the process. This has basic implications:
+- You can use identity defined in the certificate to grant access
+- Do don't need do anything in the application itself to secure all of its incoming and outgoing communication
+- But the service mesh must do a lot work behind the scenes (like [providing certificates](https://istio.io/latest/docs/tasks/security/cert-management/) etc.)
 
-This was created as my own personal prepration for ICA and as I understand from the reviews, the exam is heavily hands-on based with a lot of tasks and little time to do them. I therefore try to get as much exercises as possible.
+This is one of the major benefits of the service mesh concept, because otherwise all applications need to do this themselves (which is an enormous amount of work, configuration, tooling). Note that from application point of view, all communication seems to be done via unsecured HTTP only, but the proxy does all the work behind the scenes.

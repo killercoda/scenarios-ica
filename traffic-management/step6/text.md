@@ -1,4 +1,4 @@
-For `reviews`, send all traffic to v1. Also mirror all traffic for `reviews` version 1 service to `reviews` version 3 service. Edit already existing VirtualService from previous steps.
+For `reviews`, send all traffic to `v1`. Also mirror all traffic for `reviews` version 1 service to `reviews` version 3 service. Edit already existing `VirtualService` from previous steps.
 
 ```plan
 kubectl apply -f /root/solutions/step6-mirror.yaml

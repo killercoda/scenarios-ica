@@ -1,6 +1,4 @@
 <br>
-This playground has Istio installed on Kubernetes
+You will practise basic traffic routing options that Istio offers like splitting traffic, mirroring and other routing possibilities.
 
-Also the demo app [Bookinfo](https://istio.io/latest/docs/examples/bookinfo/) is installed in the `default` namespace.
-
-This was created as my own personal prepration for ICA and as I understand from the reviews, the exam is heavily hands-on based with a lot of tasks and little time to do them. I therefore try to get as much exercises as possible.
+All these primitives like `VirtualService` and `DestinationRule` make most of the ICA hands-on, so get very familiar with these and also learn how to lookup these definitions in the Istio docs.

@@ -1,6 +1,6 @@
 {
   "title": "Resilience and Fault Injection",
-  "description": "FIXME: This playground has Istio installed on Kubernetes. Bookinfo demo application is also preprared along with several exercises on how to prepare for you ICA certification.",
+  "description": "Practise basic service mesh resilience pattern and fault injection options.",
   "details": {
       "steps": [
       {

@@ -1,1 +1,28 @@
-TODO
+apiVersion: networking.istio.io/v1alpha3
+kind: WorkloadGroup
+metadata:
+  name: outside-vms
+spec:
+  metadata:
+    labels:
+      app: inventory-lookup
+  template:
+    serviceAccount: default
+  probe:
+    httpGet:
+      port: 8080
+---
+apiVersion: networking.istio.io/v1beta1
+kind: WorkloadEntry
+metadata:
+  annotations:
+    istio.io/autoRegistrationGroup: outside-vms
+  labels:
+    app: inventory-lookup
+  name: outside-vm
+spec:
+  address: 10.11.12.13
+  labels:
+    app: inventory-lookup
+  serviceAccount: default
+

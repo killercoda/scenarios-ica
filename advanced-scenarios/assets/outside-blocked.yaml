@@ -4,6 +4,8 @@ metadata:
   name: only-mesh-routing
   namespace: outside-blocked
 spec:
-  workloadSelector: {}
+  workloadSelector:
+    labels:
+      app: sleep
   outboundTrafficPolicy:
     mode: REGISTRY_ONLY

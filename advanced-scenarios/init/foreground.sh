@@ -31,4 +31,4 @@ kubectl label namespace istio-should-work istio-injection=enabled
 kubectl create namespace outside-blocked
 kubectl label namespace outside-blocked istio-injection=enabled
 kubectl apply -n outside-blocked -f /tmp/outside-blocked.yaml
-kubectl apply -n outside-blocked -f /tmp/sleep.yaml
+kubectl apply -n outside-blocked -f /tmp/sleep-pod.yaml

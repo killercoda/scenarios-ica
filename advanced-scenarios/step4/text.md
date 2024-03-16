@@ -2,7 +2,7 @@ The pod `sleep` in `outside-blocked` namespace is trying to reach `google.com`, 
 
 Verify that this does not work:
 ```plan
-kubectl exec -n outside-blocked sleep -- curl --no-progress-meter google.com
+kubectl exec -n outside-blocked sleep -- curl --no-progress-meter google.com -v
 ```{{exec}}
 
 Hint:

@@ -12,21 +12,23 @@ istioctl install --set profile=demo -y --manifests=/root/istio-${ISTIO_VERSION}/
 mkdir -p /root/solutions/
 mv /tmp/step*.yaml /root/solutions/
 
-kubectl apply -f /tmp/disable-mtls.yaml
-
 # default ns
 kubectl label namespace default istio-injection=enabled
-kubectl apply -f /tmp/httpbin.yaml
 kubectl apply -f /tmp/sleep-pod.yaml
 
-# workload-level ns
-kubectl create namespace workload-level
-kubectl label namespace workload-level istio-injection=enabled
-kubectl apply -n workload-level -f /tmp/httpbin.yaml
-kubectl apply -n workload-level -f /tmp/sleep-pod.yaml
+# step2 - egress ns
+kubectl create namespace egress
+kubectl label namespace egress istio-injection=enabled
+kubectl apply -n egress -f /tmp/egress-broken.yaml
+kubectl apply -n egress -f /tmp/sleep-pod.yaml
 
-# namespace-level ns
-kubectl create namespace namespace-level
-kubectl label namespace namespace-level istio-injection=enabled
-kubectl apply -n namespace-level -f /tmp/httpbin.yaml
-kubectl apply -n namespace-level -f /tmp/sleep-pod.yaml
+# step3 - istio-should-work ns
+kubectl create namespace istio-should-work
+kubectl apply -n istio-should-work -f /tmp/httpbin.yaml
+kubectl label namespace istio-should-work istio-injection=enabled
+
+# step4 - outside-blocked ns
+kubectl create namespace outside-blocked
+kubectl label namespace outside-blocked istio-injection=enabled
+kubectl apply -n outside-blocked -f /tmp/outside-blocked.yaml
+kubectl apply -n outside-blocked -f /tmp/sleep.yaml

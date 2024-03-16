@@ -1,0 +1,9 @@
+apiVersion: networking.istio.io/v1beta1
+kind: Sidecar
+metadata:
+  name: only-mesh-routing
+  namespace: outside-blocked
+spec:
+  workloadSelector: {}
+  outboundTrafficPolicy:
+    mode: REGISTRY_ONLY

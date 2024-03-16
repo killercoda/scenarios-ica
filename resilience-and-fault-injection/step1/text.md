@@ -24,12 +24,10 @@ FIXME: THIS DOESNT TRIGGER
 kubectl apply -f /root/solutions/step1-circuit-breaker-reviews.yaml
 ```{{exec}}
 
-Do quickly these to observe the desired effect. First should be ok, second and third should fail (this is the theory. However there is some "slack" also mentioned in the docs, so it hard to trigger this way the limit.
+Do quickly these to observe the desired effect. First should be ok, second and third should fail - this is the theory. However there is some "slack" also mentioned in the docs, so it hard to trigger this way the limit.
 ```plan
-kubectl exec sleep -- curl -o /dev/null "http://reviews:9080/reviews/7" -v
-echo
-kubectl exec sleep -- curl -o /dev/null "http://reviews:9080/reviews/7" -v
-echo
-kubectl exec sleep -- curl -o /dev/null "http://reviews:9080/reviews/7" -v
-echo
+kubectl exec sleep -- apt install apache2-tools -y 
+kubectl exec sleep -- ab -n 1000 -c 10 "http://reviews:9080/reviews/7"
 ```{{exec}}
+
+When you bombard the service with many requests, you should get some `non 2xx` meaning that they were not completed ok and Istio stopped them.

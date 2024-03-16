@@ -21,7 +21,7 @@ Bonus: think about how this is diffent from using `NetworkPolicy`.
 Now configure Istio to deny all traffic to workload `httpbin` in namespace `mtls-permissive`.
 
 ```plan
-kubectl apply -f /root/solutions/step3-deny-all.yaml
+kubectl apply -f /root/solutions/step2-deny-all.yaml
 ```{{exec}}
 
 This should fail:
@@ -31,6 +31,10 @@ echo
 ```{{exec}}
 
 Now add a rule to allow `GET` requests to `/status/200`. Everything else should stay blocked.
+
+```plan
+kubectl apply -f /root/solutions/step2-allow-get.yaml
+```{{exec}}
 
 This should work:
 ```plan

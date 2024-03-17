@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: httpbin-v1
+  name: httpbin
 spec:
   replicas: 1
   selector:
@@ -13,30 +13,6 @@ spec:
       labels:
         app: httpbin
         version: v1
-    spec:
-      containers:
-      - image: docker.io/kennethreitz/httpbin
-        imagePullPolicy: IfNotPresent
-        name: httpbin
-        command: ["gunicorn", "--access-logfile", "-", "-b", "0.0.0.0:80", "httpbin:app"]
-        ports:
-        - containerPort: 80
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: httpbin-v2
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: httpbin
-      version: v2
-  template:
-    metadata:
-      labels:
-        app: httpbin
-        version: v2
     spec:
       containers:
       - image: docker.io/kennethreitz/httpbin
@@ -84,6 +60,3 @@ spec:
   - name: v1
     labels:
       version: v1
-  - name: v2
-    labels:
-      version: v2

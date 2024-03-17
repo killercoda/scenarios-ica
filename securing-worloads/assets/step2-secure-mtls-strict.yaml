@@ -1,18 +1,13 @@
-apiVersion: networking.istio.io/v1alpha3
-kind: VirtualService
+# TODO: HERE
+apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy
 metadata:
   name: httpbin
-  namespace: mtls-strict
+  namespace: default
 spec:
-  hosts:
-    - httpbin
-  http:
-  - match:
-      fromNamespaces: # FIXME: HERE???
-      - default
-        
-    route:
-    - destination:
-        host: httpbin
-        subset: v1
-      weight: 100
+  action: ALLOW
+  rules:
+  - from:
+    - source:
+        namespaces:
+        - default

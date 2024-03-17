@@ -20,10 +20,10 @@ kubectl apply -f /tmp/httpbin.yaml
 kubectl apply -f /tmp/sleep-pod.yaml
 
 # step1
-for NS in (mtls-permissive mtls-strict mtls-disable jwt); do
+for NS in mtls-permissive mtls-strict mtls-disable jwt; do
     kubectl create namespace $NS
     kubectl label namespace $NS istio-injection=enabled
-    kubectl apply -n $NS /tmp/httpbin.yaml
+    kubectl apply -n $NS -f /tmp/httpbin.yaml
 done
 kubectl apply -f /tmp/env-step1.yaml
 

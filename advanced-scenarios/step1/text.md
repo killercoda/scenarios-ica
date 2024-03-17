@@ -6,9 +6,11 @@ cat /root/solutions/step1-external-vm-example.yaml
 
 You also need to [install a sidecar](https://istio.io/latest/docs/setup/install/virtual-machine/) on the VM yourself.
 
-Bonus: Can you provider more than single service via `outside-vm`?
-TODO: link
+Bonus: Can you provider more than [single service](https://istio.io/latest/docs/ops/deployment/vm-architecture/) via `outside-vm`?
 
 Bonus 2: Does this mean that all outgoing traffic from `outside-vm` goes also through the side-proxy? (Similar to containers?)
 
-TODO: link
+<details><summary>Solution</summary>
+<br>
+Yes.
+</details>

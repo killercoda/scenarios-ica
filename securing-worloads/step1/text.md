@@ -37,13 +37,3 @@ kubectl exec sleep -- curl -o /dev/null "http://httpbin.mtls-permissive:8000/sta
 ```{{exec}}
 
 Note that from `curl` point of view, you have no idea how the service mesh secures or does not secure the communication - you communicate in the same manner with all 3 variants of `mtls-X` namespaces. But try to connect directly from the terminal do `mtls-strict` which is exposed as Service.
-
-```plan
-# TODO: get IP here
-kubectl get service -n mtls-permissive httpbin -o jsonpath=.status.ip????
-
-curl -o /dev/null "http://httpbin.mtls-permissive:8000/status/200" -v
-```{{exec}}
-
-
-

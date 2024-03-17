@@ -7,36 +7,42 @@ istioctl x precheck
 
 - Install a `canary` Istio revision to the `istio-system` namespace next to already installed one:
 
-<br>
 <details><summary>Solution</summary>
 <br>
+
 ```plain
 istioctl install --set revision=canary -f /root/profiles/demo.yaml
 ```{{exec}}
+
 </details>
+<br>
 
 - Verify the installation (there are 2 Istio installations now)
 
-<br>
 <details><summary>Solution</summary>
 <br>
+
 ```plain
 kubectl get pods -n istio-system -l app=istiod
 kubectl get svc -n istio-system -l app=istiod
 kubectl get mutatingwebhookconfigurations
 ```{{exec}}
+
 </details>
+<br>
 
 - Create a new namespace `canary-ns` controlled via `canary` Istio. Also ensure that namespace does not have label `istio-injection` as it would take precedence over `istio.io/rev`.
 
-<br>
 <details><summary>Solution</summary>
 <br>
+
 ```plain
 kubectl create ns canary-ns
 kubectl label namespace canary-ns istio-injection- istio.io/rev=canary
 ```{{exec}}
+
 </details>
+<br>
 
 - Run an example workload in `canary-ns` (nginx for example):
 
@@ -52,13 +58,13 @@ istioctl proxy-status | grep "\.canary-ns "
 
 - Cleanup namespace `canary-ns` and `canary` Istio installation
 
-<br>
 <details><summary>Solution</summary>
 <br>
+
 ```plain
 kubectl delete namespace canary-ns
 istioctl uninstall --set revision=canary -f /root/profiles/demo.yaml
 ```{{exec}}
-</details>
 
+</details>
 <br>

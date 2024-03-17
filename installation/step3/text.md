@@ -5,12 +5,12 @@ With using `/root/profiles/demo.yaml` do the following:
 istioctl install -f /root/profiles/demo-overlay.yaml
 ```{{exec}}
 
-<br>
 <details><summary>Solution</summary>
 <br>
+
 ```plain
 diff /root/profiles/demo.yaml /root/profiles/demo-overlay.yaml
 ```{{exec}}
-</details>
 
+</details>
 <br>

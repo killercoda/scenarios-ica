@@ -1,13 +1,15 @@
 
 - [Uninstall Istio](https://istio.io/latest/docs/setup/install/istioctl/#uninstall-istio).
 
-<br>
 <details><summary>Solution</summary>
 <br>
+
 ```plain
 istioctl uninstall --purge
 ```{{exec}}
+
 </details>
+<br>
 
 - You can also remove the whole namespace:
 ```plain

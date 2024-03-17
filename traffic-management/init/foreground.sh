@@ -17,6 +17,9 @@ mv /tmp/step*.yaml /root/solutions/
 kubectl label namespace default istio-injection=enabled
 kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-${ISTIO_MINOR_VERSION}/samples/bookinfo/platform/kube/bookinfo.yaml
 kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-${ISTIO_MINOR_VERSION}/samples/bookinfo/networking/bookinfo-gateway.yaml
+# remove some unused resources:
+kubectl delete gateway bookinfo-gateway
+kubectl delete virtualservice bookinfo
 # install sleep-pod, namespace=default
 kubectl apply -f /tmp/sleep-pod.yaml
 kubectl apply -f /tmp/httpbin.yaml
@@ -32,7 +35,8 @@ kubectl apply -f /tmp/only-mesh-routing.yaml
 # install sleep-pod, namespace=only-mesh-routing
 kubectl apply -n only-mesh-routing -f /tmp/sleep-pod.yaml
 
-kubectl -n only-mesh-routing wait pod --all --for condition=Ready --timeout 2m
+echo "Starting the environment, hang on..."
+kubectl -n only-mesh-routing wait pod --all --for condition=Ready --timeout 4m
 
 clear
 echo "YOU ARE READY TO GO!"

@@ -12,7 +12,6 @@ spec:
   - route:
     - destination:
         host: details
-        subset: v1
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway

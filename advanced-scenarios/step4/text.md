@@ -5,11 +5,13 @@ Verify that this does not work:
 kubectl exec -n outside-blocked sleep -- curl --no-progress-meter google.com -v
 ```{{exec}}
 
-Hint?
-TODO: HIDE THIS
+<br>
+<details><summary>Hint?</summary>
+<br>
 ```plan
 kubectl get -n outside-blocked sidecars
 ```{{exec}}
+</details>
 
 Apply the fix:
 ```plan

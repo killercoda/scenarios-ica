@@ -28,14 +28,14 @@ kubectl exec sleep -- curl --no-progress-meter details:9080/details/7 -v
 ```{{exec}}
 
 ```plan
-kubectl exec sleep -- curl --no-progress-meter ratings:9080/ratings/7
+kubectl exec sleep -- curl --no-progress-meter ratings:9080/ratings/7 -v
 ```{{exec}}
 
 ```plan
-kubectl exec sleep -- curl --no-progress-meter reviews:9080/reviews/7
+kubectl exec sleep -- curl --no-progress-meter reviews:9080/reviews/7 -v
 ```{{exec}}
 
-Try to simulate canary deployment - for reviews service, move 40% of traffic to v2. Check the output of the service.
+Try to simulate canary deployment - for reviews service, move `40%` of traffic to `v2`. Check the output of the service.
 
 ```plan
 kubectl apply -f /root/solutions/step1-reviews-40-to-v2.yaml
@@ -47,7 +47,7 @@ Verify via istioctl.
 istioctl analyze -n default
 ```{{exec}}
 
-Check that around 40 percent goes to v2.
+Check that around `40%` goes to `v2`.
 
 ```plan
 for run in {1..10}; do
@@ -56,7 +56,7 @@ for run in {1..10}; do
 done
 ```{{exec}}
 
-Shift all traffic to v2 now.
+Shift all traffic to `v2` now.
 
 ```plan
 kubectl apply -f /root/solutions/step1-reviews-all-to-v2.yaml
@@ -68,7 +68,7 @@ Verify via istioctl.
 istioctl analyze -n default
 ```{{exec}}
 
-Check that all goes to v2.
+Check that all goes to `v2`.
 
 ```plan
 for run in {1..10}; do
@@ -77,7 +77,7 @@ for run in {1..10}; do
 done
 ```{{exec}}
 
-Now introduce new version 3 just if the header 'X-Special: yes" is present. For other request show v2 still.
+Now introduce new version 3 just if the header `X-Special: yes` is present. For other request show `v2` still.
 
 ```plan
 kubectl apply -f /root/solutions/step1-reviews-header-to-v3.yaml
@@ -89,7 +89,7 @@ Verify via istioctl.
 istioctl analyze -n default
 ```{{exec}}
 
-Check that non-header traffic goes to v2 and with header the traffic gets v3 reponse.
+Check that non-header traffic goes to `v2` and with header the traffic gets `v3` reponse.
 
 ```plan
 kubectl exec sleep -- curl --no-progress-meter reviews:9080/reviews/7 -v

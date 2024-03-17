@@ -39,7 +39,7 @@ kubectl label namespace namespace-level istio-injection=enabled
 kubectl apply -n namespace-level -f /tmp/httpbin.yaml
 kubectl apply -n namespace-level -f /tmp/sleep-pod.yaml
 
-kubectl -n namespace-level wait pod --all --for condition=Available --timeout 2m
+kubectl -n namespace-level wait pod --all --for condition=Ready --timeout 2m
 
 clear
 echo "YOU ARE READY TO GO!"

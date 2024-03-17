@@ -1,6 +1,8 @@
 Istio is not working for the `httpbin` workload in `istio-should-work` namespace, fix it.
 
-TODO: hide this:
+<br>
+<details><summary>Solution</summary>
+<br>
 Verify that namespace should inject sidecar (see the namespace labels, check deployment labels)
 
 ```plan
@@ -22,3 +24,4 @@ After a while, you should see sidecard inject `2/2`.
 ```plan
 kubectl get pods -n istio-should-work -w
 ```{{exec}}
+</details>

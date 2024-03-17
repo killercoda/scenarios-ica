@@ -1,6 +1,6 @@
 {
   "title": "Resilience and Fault Injection",
-  "description": "Practise basic service mesh resilience pattern and fault injection options.",
+  "description": "Practice basic service mesh resilience pattern and fault injection options.",
   "details": {
       "steps": [
       {

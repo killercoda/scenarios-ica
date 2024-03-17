@@ -33,7 +33,7 @@ kubectl label namespace outside-blocked istio-injection=enabled
 kubectl apply -n outside-blocked -f /tmp/outside-blocked.yaml
 kubectl apply -n outside-blocked -f /tmp/sleep-pod.yaml
 
-kubectl -n outside-blocked wait pod --all --for condition=Available --timeout 2m
+kubectl -n outside-blocked wait pod --all --for condition=Ready --timeout 2m
 
 clear
 echo "YOU ARE READY TO GO!"

@@ -39,6 +39,7 @@ kubectl label namespace namespace-level istio-injection=enabled
 kubectl apply -n namespace-level -f /tmp/httpbin.yaml
 kubectl apply -n namespace-level -f /tmp/sleep-pod.yaml
 
+echo "Starting the environment, hang on..."
 kubectl -n namespace-level wait pod --all --for condition=Ready --timeout 2m
 
 clear

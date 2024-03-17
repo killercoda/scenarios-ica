@@ -34,6 +34,7 @@ Create namespace `not-automatic` and create a pod with injected sidecar without 
 ```plan
 kubectl create namespace non-automatic
 kubectl run --image nginx -n non-automatic non-automatic-nginx --dry-run=client -o yaml | istioctl kube-inject -f - | kubectl apply -f -
+kubectl get pods -n non-automatic
 ```{{exec}}
 
 </details>

@@ -1,6 +1,6 @@
 Let's get back to `default` namespace for now.
 
-Try to [inject 50% faults](https://istio.io/latest/docs/tasks/traffic-management/fault-injection/) into `ratings` v1 and verify.
+Try to [inject 50% faults](https://istio.io/latest/docs/tasks/traffic-management/fault-injection/) into `ratings` `v1` and verify.
 
 ```plan
 kubectl apply -f /root/solutions/step5-ratings-faults.yaml

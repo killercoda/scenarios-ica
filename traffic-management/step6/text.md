@@ -8,8 +8,10 @@ kubectl apply -f /root/solutions/step6-mirror.yaml
 istioctl analyze -n default
 ```{{exec}}
 
-Simulate a request:
+Simulate requests:
 ```plan
+kubectl exec sleep -- curl --no-progress-meter reviews:9080/reviews/7
+echo
 kubectl exec sleep -- curl --no-progress-meter reviews:9080/reviews/7
 echo
 ```{{exec}}

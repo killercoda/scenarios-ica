@@ -22,7 +22,7 @@ Now configure Istio to deny all traffic to workload `httpbin` in namespace `mtls
 kubectl apply -f /root/solutions/step2-deny-all.yaml
 ```{{exec}}
 
-This should fail:
+This should fail (wait a few seconds):
 ```plan
 kubectl exec sleep -- curl -o /dev/null "http://httpbin.mtls-permissive:8000/status/200" -v
 ```{{exec}}

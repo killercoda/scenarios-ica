@@ -19,6 +19,11 @@ kubectl label namespace default istio-injection=enabled
 kubectl apply -f /tmp/httpbin.yaml
 kubectl apply -f /tmp/sleep-pod.yaml
 
+# non-default ns
+kubectl create namespace non-default
+kubectl label namespace default istio-injection=enabled
+kubectl apply -n non-default -f /tmp/sleep-pod.yaml
+
 # step1
 for NS in mtls-permissive mtls-strict mtls-disable jwt; do
     kubectl create namespace $NS

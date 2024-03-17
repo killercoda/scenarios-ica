@@ -1,6 +1,6 @@
 For this example, default cluster-level policy is set to `DISABLE` to help you test your progress.
 
-Configure required mTLS in the namespace `workload-level` between `sleep` pod and `httpbin` service on the workload level.
+Configure required mTLS in the namespace `workload-level` between `sleep` pod and `httpbin` service on the workload level. (Don't forget to configure on both ends.)
 
 ```plan
 kubectl apply -f /root/solutions/step3-workload-level.yaml
@@ -13,9 +13,9 @@ istioctl analyze -n workload-level
 
 ```plan
 kubectl exec -n default sleep -- curl -o /dev/null "http://httpbin.workload-level:8000/" -v
-echo
+```{{exec}}
+```plan
 kubectl exec -n workload-level sleep -- curl -o /dev/null "http://httpbin.workload-level:8000/" -v
-echo
 ```{{exec}}
 
 
@@ -29,12 +29,12 @@ Check for problems:
 istioctl analyze -n namespace-level
 ```{{exec}}
 
-`sleep` from default should not reach, but
+`sleep` from `default` namespace should not reach, but `sleep` from the same namespace should
 ```plan
 kubectl exec -n default sleep -- curl -o /dev/null "http://httpbin.namespace-level:8000/" -v
-echo
+```{{exec}}
+```plan
 kubectl exec -n namespace-level sleep -- curl -o /dev/null "http://httpbin.namespace-level:8000/" -v
-echo
 ```{{exec}}
 
 Do the same on the cluster level. (Hint: Edit the existing resource)

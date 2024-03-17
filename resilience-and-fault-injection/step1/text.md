@@ -7,11 +7,12 @@ kubectl apply -f /root/solutions/step1-circuit-breaker.yaml
 Do quickly these to observe the desired effect. First should be ok, second should trigger an error and third one should not get through because of the circuit breaker.
 ```plan
 kubectl exec sleep -- curl -o /dev/null "http://httpbin:8000/status/200" -v
-echo
+```{{exec}}
+```plan
 kubectl exec sleep -- curl -o /dev/null "http://httpbin:8000/status/500" -v
-echo
+```{{exec}}
+```plan
 kubectl exec sleep -- curl -o /dev/null "http://httpbin:8000/status/200" -v
-echo
 ```{{exec}}
 
 
@@ -23,10 +24,6 @@ kubectl apply -f /root/solutions/step1-circuit-breaker-reviews.yaml
 
 Do quickly these to observe the desired effect. First should be ok, second and third should fail - this is the theory. However there is some "slack" also mentioned in the docs, so it hard to trigger this way the limit.
 
-TODO: TEST THIS
 ```plan
-kubectl exec sleep -- apt install apache2-tools -y 
-kubectl exec sleep -- ab -n 1000 -c 10 "http://reviews:9080/reviews/7"
+kubectl exec sleep -- curl -o /dev/null "http://httpbin:8000/status/200" -v
 ```{{exec}}
-
-When you bombard the service with many requests, you should get some `Non 2xx responses` meaning that they were not completed ok and Istio stopped them.

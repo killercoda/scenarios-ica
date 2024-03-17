@@ -45,15 +45,16 @@ kubectl apply -f /root/solutions/step3-cluster-level.yaml
 
 Check for problems:
 ```plan
-istioctl analyze -n default
+istioctl analyze -n istio-system
 ```{{exec}}
 
 Now `sleep` from `default` namespace can reach them all:
 ```plan
 kubectl exec -n default sleep -- curl -o /dev/null "http://httpbin:8000/" -v
-echo
+```{{exec}}
+```plan
 kubectl exec -n default sleep -- curl -o /dev/null "http://httpbin.namespace-level:8000/" -v
-echo
+```{{exec}}
+```plan
 kubectl exec -n default sleep -- curl -o /dev/null "http://httpbin.workload-level:8000/" -v
-echo
 ```{{exec}}

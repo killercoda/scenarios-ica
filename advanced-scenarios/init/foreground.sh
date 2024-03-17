@@ -19,7 +19,6 @@ kubectl apply -f /tmp/sleep-pod.yaml
 # step2 - egress ns
 kubectl create namespace egress
 kubectl label namespace egress istio-injection=enabled
-kubectl apply -n egress -f /tmp/egress-broken.yaml
 kubectl apply -n egress -f /tmp/sleep-pod.yaml
 
 # step3 - istio-should-work ns

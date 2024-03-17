@@ -8,9 +8,11 @@ kubectl exec -n outside-blocked sleep -- curl --no-progress-meter google.com -v
 <br>
 <details><summary>Hint?</summary>
 <br>
+
 ```plan
 kubectl get -n outside-blocked sidecars
 ```{{exec}}
+
 </details>
 
 Apply the fix:

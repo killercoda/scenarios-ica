@@ -1,0 +1,48 @@
+{
+  "title": "Securing Workloads",
+  "description": "These scenarios test you knowledge of `PeerAuthentication` and authorization in Istio service mesh.",
+  "details": {
+      "steps": [
+      {
+        "title": "Understand Istio security features",
+        "text": "step1/text.md"
+      },
+      {
+        "title": "Set up Istio authorization for HTTP/TCP traffic in the mesh",
+        "text": "step2/text.md"
+      },
+      {
+        "title": "Configure mutual TLS at mesh, namespace, and workload levels",
+        "text": "step3/text.md"
+      }
+    ],
+    "finish": {
+      "text": "finish/finish.md"
+    },
+    "intro": {
+      "text": "init/init.md",
+      "background": "init/background.sh",
+      "foreground": "init/foreground.sh"
+    },
+    "assets": {
+      "host01": [
+        {"file": "wait-background.sh", "target": "/ks", "chmod": "+x"},
+        {"file": "demo.yaml", "target": "/tmp", "chmod": "+x"},
+        {"file": "httpbin.yaml", "target": "/tmp", "chmod": "+x"},
+        {"file": "sleep-pod.yaml", "target": "/tmp", "chmod": "+x"},
+        {"file": "disable-mtls.yaml", "target": "/tmp", "chmod": "+x"},
+        {"file": "env-step1.yaml", "target": "/tmp", "chmod": "+x"},
+
+        {"file": "step2-secure-mtls-strict.yaml", "target": "/tmp", "chmod": "+x"},
+        {"file": "step2-allow-get.yaml", "target": "/tmp", "chmod": "+x"},
+        {"file": "step2-deny-all.yaml", "target": "/tmp", "chmod": "+x"},
+        {"file": "step3-cluster-level.yaml", "target": "/tmp", "chmod": "+x"},
+        {"file": "step3-namespace-level.yaml", "target": "/tmp", "chmod": "+x"},
+        {"file": "step3-workload-level.yaml", "target": "/tmp", "chmod": "+x"}
+      ]
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-2nodes"
+  }
+}

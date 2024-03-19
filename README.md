@@ -2,6 +2,10 @@
 
 This is the repository for the scenarios available on [killercoda.com/ica-scenarios](https://killercoda.com/ica-scenarios)
 
+Here are some [docs on the Istio Certified Associate (ICA)](https://training.linuxfoundation.org/certification/istio-certified-associate-ica/)
+
+This environment is created by people why try to prepare for the certification and not the creators. Bear in mind, that more learning than this simulator should be done.
+
 ## Contribute
 
 Would you like to help others by changing, modifying or creating scenarios?

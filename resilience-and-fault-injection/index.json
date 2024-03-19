@@ -1,0 +1,47 @@
+{
+  "title": "Resilience and Fault Injection",
+  "description": "Practice basic service mesh resilience pattern and fault injection options.",
+  "details": {
+      "steps": [
+      {
+        "title": "Configuring circuit breakers (with or without outlier detection)",
+        "text": "step1/text.md"
+      },
+      {
+        "title": "Using resilience features",
+        "text": "step2/text.md"
+      },
+      {
+        "title": "Creating fault injection",
+        "text": "step3/text.md"
+      }
+    ],
+    "finish": {
+      "text": "finish/finish.md"
+    },
+    "intro": {
+      "text": "init/init.md",
+      "background": "init/background.sh",
+      "foreground": "init/foreground.sh"
+    },
+    "assets": {
+      "host01": [
+        {"file": "wait-background.sh", "target": "/ks", "chmod": "+x"},
+        {"file": "demo.yaml", "target": "/tmp", "chmod": "+x"},
+        {"file": "httpbin.yaml", "target": "/tmp", "chmod": "+x"},
+        {"file": "reviews.yaml", "target": "/tmp", "chmod": "+x"},
+        {"file": "sleep-pod.yaml", "target": "/tmp", "chmod": "+x"},
+
+        {"file": "step1-circuit-breaker.yaml", "target": "/tmp", "chmod": "+x"},
+        {"file": "step1-circuit-breaker-reviews.yaml", "target": "/tmp", "chmod": "+x"},
+        {"file": "step2-retries.yaml", "target": "/tmp", "chmod": "+x"},
+        {"file": "step2-cleanup.yaml", "target": "/tmp", "chmod": "+x"},
+        {"file": "step3-fault-delay.yaml", "target": "/tmp", "chmod": "+x"},
+        {"file": "step3-fault-abort.yaml", "target": "/tmp", "chmod": "+x"}
+      ]
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-2nodes"
+  }
+}

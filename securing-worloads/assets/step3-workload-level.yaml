@@ -1,0 +1,23 @@
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  name: mtls-httpbin
+  namespace: workload-level
+spec:
+  selector:
+    matchLabels:
+      app: httpbin
+  mtls:
+    mode: STRICT
+---
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  name: mtls-sleep
+  namespace: workload-level
+spec:
+  selector:
+    matchLabels:
+      app: sleep
+  mtls:
+    mode: STRICT

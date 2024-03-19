@@ -1,10 +1,10 @@
 {
-  "title": "Playground",
-  "description": "This playground has Istio installed on Kubernetes",
+  "title": "Playground with Bookinfo app",
+  "description": "This playground has Istio installed on Kubernetes. Bookinfo demo application is also preprared along with several exercises on how to prepare for you ICA certification.",
   "details": {
       "steps": [
       {
-        "title": "Play with Istio",
+        "title": "Check the Istio installation",
         "text": "step1/text.md"
       }
     ],

@@ -1,0 +1,10 @@
+{
+  "items": [
+    { "path": "playground" },
+    { "path": "installation" },
+    { "path": "traffic-management" },
+    { "path": "securing-workloads" },
+    { "path": "resilience-and-fault-injection" },
+    { "path": "advanced-scenarios" }
+  ]
+}

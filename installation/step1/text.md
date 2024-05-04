@@ -51,7 +51,7 @@ istioctl profile diff minimal default
 istioctl manifest generate --set profile=external
 ```{{exec}}
 
-</solution>
+</details>
 <br>
 
 - [Perform the Istio installation](https://istio.io/latest/docs/setup/install/istioctl/#install-istio-using-the-default-profile) with prepared `demo` profile (please use Killercoda-tuned manifest file):

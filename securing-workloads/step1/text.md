@@ -28,12 +28,12 @@ kubectl exec sleep -- curl -o /dev/null "http://httpbin.mtls-permissive:8000/sta
 - service `httpbin` in namespace `mtls-strict` that requires you to connect with mTLS
 
 ```plan
-kubectl exec sleep -- curl -o /dev/null "http://httpbin.mtls-permissive:8000/status/200" -v
+kubectl exec sleep -- curl -o /dev/null "http://httpbin.mtls-strict:8000/status/200" -v
 ```{{exec}}
 
 - service `httpbin` in namespace `mtls-disable` that has mTLS disabled
 ```plan
-kubectl exec sleep -- curl -o /dev/null "http://httpbin.mtls-permissive:8000/status/200" -v
+kubectl exec sleep -- curl -o /dev/null "http://httpbin.mtls-disable:8000/status/200" -v
 ```{{exec}}
 
 Note that from `curl` point of view, you have no idea how the service mesh secures or does not secure the communication - you communicate in the same manner with all 3 variants of `mtls-X` namespaces. But try to connect directly from the terminal do `mtls-strict` which is exposed as Service.
